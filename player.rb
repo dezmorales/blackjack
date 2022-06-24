@@ -29,10 +29,6 @@ class Player
     @bank -= 10
   end
 
-  def add_bank
-    @bank += 10
-  end
-
   def show_cards_face
     @cards.map(&:show).join('')
   end
