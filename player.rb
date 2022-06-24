@@ -1,7 +1,10 @@
+# frozen_string_literal: true
+
 require_relative 'deck'
 
 class Player
-  attr_reader :name, :bank, :cards
+  attr_accessor :bank, :cards
+  attr_reader :name
 
   def initialize(name)
     @name = name
@@ -17,7 +20,6 @@ class Player
     sum = 0
     @cards.each { |card| sum += card.score unless card.value == 'A' }
     @cards.count { |card| card.value == 'A' }.times do
-
       sum += sum <= 10 ? 11 : 1
     end
     sum
@@ -31,11 +33,11 @@ class Player
     @bank += 10
   end
 
-  def show_card
+  def show_cards_face
     @cards.map(&:show).join('')
   end
 
-  def hide_card
-    @cards.map { "*" }.join(' ')
+  def show_cards_shirt
+    @cards.map { '*' }.join(' ')
   end
 end

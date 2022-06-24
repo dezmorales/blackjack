@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Deck
   SUITS = %i[♣️ ♠️ ♥️ ♦].freeze
   CARDS_NUMBER = %w[2 3 4 5 6 7 8 9 10].freeze
@@ -10,7 +12,7 @@ class Deck
   end
 
   def create_deck
-    SUITS.each_with_index do |suit|
+    SUITS.each do |suit|
       CARDS_NUMBER.each { |value| @deck << Card.new(value, suit) }
       CARDS_PICTURE.each { |value| @deck << Card.new(value, suit) }
     end
@@ -18,7 +20,7 @@ class Deck
     @deck.shuffle!
   end
 
-  def deal_cards
+  def deal_card
     @deck.pop
   end
 end
